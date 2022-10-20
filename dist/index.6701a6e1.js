@@ -25414,22 +25414,25 @@ class MainView extends _reactDefault.default.Component {
         this.state = {
             movies: [
                 {
-                    _id: 1,
-                    Title: "Inception",
-                    Description: "desc1...",
-                    ImagePath: "..."
+                    _id: "633e0cc8b4441dbf71b82a68",
+                    Title: 'Red Cliff',
+                    Description: 'In 208 A.D., in the final days of the Han Dynasty, shrewd Prime Minster Cao Cao convinced the child-Emperor Han the only way to unite all of China was to declare war on the kingdoms of Xu in the west and East Wu in the south.',
+                    imgUrl: 'https://m.media-amazon.com/images/M/MV5BMTcyOTQ3NDA1OV5BMl5BanBnXkFtZTcwMDY3NzM4Mg@@._V1_.jpg',
+                    Genre: 'Action'
                 },
                 {
-                    _id: 2,
-                    Title: "The Shawshank Redemption",
-                    Description: "desc2...",
-                    ImagePath: "..."
+                    _id: "633e0ceab4441dbf71b82a69",
+                    Title: 'House of Flying Daggers',
+                    Description: 'A romantic police captain breaks a beautiful member of a rebel group out of prison to help her rejoin her fellows, but things are not what they seem.',
+                    imgUrl: 'https://m.media-amazon.com/images/M/MV5BMWYzM2JmOWItN2IxZC00MmFjLWEyMTQtYTQ2ODBiNjRlYmZlXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_.jpg',
+                    Genre: 'Romance'
                 },
                 {
-                    _id: 3,
-                    Title: "Gladiator",
-                    Description: "desc3...",
-                    ImagePath: "..."
+                    _id: "633e0d0cb4441dbf71b82a6a",
+                    Title: 'Call of Heroes',
+                    Description: "A group of villagers must stand up to a warlord's psychopath son, who is protected by a Commander with proficient martial arts skills as well as a small army.",
+                    imgUrl: 'https://m.media-amazon.com/images/M/MV5BNDNkMjg2MDgtMmJiZC00ZmRhLWEyMWUtOTBmMDUzZTNlMTAzXkEyXkFqcGdeQXVyNjc4MjAzNTE@._V1_.jpg',
+                    Genre: 'Action'
                 }, 
             ],
             selectedMovie: null
@@ -25455,7 +25458,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 46
+                lineNumber: 45
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25465,7 +25468,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 48
+                    lineNumber: 47
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25475,7 +25478,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 56
+                        lineNumber: 49
                     },
                     __self: this
                 }, movie._id)
@@ -25505,7 +25508,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 class MovieCard extends _reactDefault.default.Component {
     render() {
-        const { movie  } = this.props;
+        const { movie , onMovieClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
             className: "movie-card",
             onClick: ()=>{
@@ -25513,7 +25516,7 @@ class MovieCard extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 7
+                lineNumber: 8
             },
             __self: this,
             children: [
@@ -25550,7 +25553,7 @@ class MovieCard extends _reactDefault.default.Component {
             className: "movie-view",
             __source: {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 10
+                lineNumber: 8
             },
             __self: this,
             children: [
@@ -25558,14 +25561,14 @@ class MovieCard extends _reactDefault.default.Component {
                     className: "movie-poster",
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 11
+                        lineNumber: 9
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
-                        src: movie.ImagePath,
+                        src: movie.ImageUrl,
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 12
+                            lineNumber: 10
                         },
                         __self: this
                     })
@@ -25574,7 +25577,7 @@ class MovieCard extends _reactDefault.default.Component {
                     className: "movie-title",
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 14
+                        lineNumber: 12
                     },
                     __self: this,
                     children: [
@@ -25582,7 +25585,7 @@ class MovieCard extends _reactDefault.default.Component {
                             className: "label",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 15
+                                lineNumber: 13
                             },
                             __self: this,
                             children: "Title: "
@@ -25591,7 +25594,7 @@ class MovieCard extends _reactDefault.default.Component {
                             className: "value",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 16
+                                lineNumber: 14
                             },
                             __self: this,
                             children: movie.Title
@@ -25602,7 +25605,7 @@ class MovieCard extends _reactDefault.default.Component {
                     className: "movie-description",
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 18
+                        lineNumber: 16
                     },
                     __self: this,
                     children: [
@@ -25610,7 +25613,7 @@ class MovieCard extends _reactDefault.default.Component {
                             className: "label",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 19
+                                lineNumber: 17
                             },
                             __self: this,
                             children: "Description: "
@@ -25619,10 +25622,38 @@ class MovieCard extends _reactDefault.default.Component {
                             className: "value",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 20
+                                lineNumber: 18
                             },
                             __self: this,
                             children: movie.Description
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "movie-genre",
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 20
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "label",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 21
+                            },
+                            __self: this,
+                            children: "Genre: "
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "value",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 22
+                            },
+                            __self: this,
+                            children: movie.Genre
                         })
                     ]
                 }),
@@ -25632,7 +25663,7 @@ class MovieCard extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 22
+                        lineNumber: 24
                     },
                     __self: this,
                     children: "Back"
