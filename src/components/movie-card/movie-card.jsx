@@ -11,7 +11,6 @@ export class MovieCard extends React.Component {
           onMovieClick(movie);
         }}
       >
-        {" "}
         {movie.Title}
       </div>
     );
