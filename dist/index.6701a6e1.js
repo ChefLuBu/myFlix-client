@@ -25532,7 +25532,7 @@ MovieCard.propTypes = {
         imgUrl: _propTypesDefault.default.string.isRequired,
         Genre: _propTypesDefault.default.string.isRequired,
         Director: _propTypesDefault.default.shape({
-            Name: Proptypes.string.isRequired,
+            Name: _propTypesDefault.default.string.isRequired,
             Bio: _propTypesDefault.default.string.isRequired,
             Birthyear: _propTypesDefault.default.string.isRequired,
             Deathyear: _propTypesDefault.default.string.isRequired
