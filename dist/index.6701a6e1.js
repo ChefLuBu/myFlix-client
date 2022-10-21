@@ -25529,10 +25529,12 @@ MovieCard.propTypes = {
         Description: _propTypesDefault.default.string.isRequired,
         imgUrl: _propTypesDefault.default.string.isRequired,
         Genre: _propTypesDefault.default.string.isRequired,
-        Director: _propTypesDefault.default.string.isRequired,
-        Bio: _propTypesDefault.default.string.isRequired,
-        Birthyear: _propTypesDefault.default.string.isRequired,
-        Deathyear: _propTypesDefault.default.string.isRequired
+        Director: _propTypesDefault.default.shape({
+            Name: Proptypes.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birthyear: _propTypesDefault.default.string.isRequired,
+            Deathyear: _propTypesDefault.default.string.isRequired
+        })
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired
 };
