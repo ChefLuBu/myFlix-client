@@ -25433,7 +25433,12 @@ class MainView extends _reactDefault.default.Component {
     }
     setSelectedMovie(newSelectedMovie) {
         this.setState({
-            selectedMovie: Movie
+            selectedMovie: newSelectedMovie
+        });
+    }
+    onLoggedIn(user) {
+        this.setState({
+            user
         });
     }
     render() {
@@ -25443,7 +25448,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 40
+                lineNumber: 47
             },
             __self: this
         }));
@@ -25451,7 +25456,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 42
+                lineNumber: 49
             },
             __self: this
         }));
@@ -25459,7 +25464,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 45
+                lineNumber: 52
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25469,7 +25474,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 47
+                    lineNumber: 54
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25479,7 +25484,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 49
+                        lineNumber: 56
                     },
                     __self: this
                 }, movie._id)
@@ -25530,13 +25535,13 @@ MovieCard.propTypes = {
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
         imgUrl: _propTypesDefault.default.string.isRequired,
-        Genre: _propTypesDefault.default.string.isRequired,
-        Director: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired,
-            Bio: _propTypesDefault.default.string.isRequired,
-            Birthyear: _propTypesDefault.default.string.isRequired,
-            Deathyear: _propTypesDefault.default.string.isRequired
-        })
+        Genre: _propTypesDefault.default.object.isRequired,
+        Name: _propTypesDefault.default.string.isRequired,
+        Director: _propTypesDefault.default.object.isRequired,
+        Name: _propTypesDefault.default.string.isRequired,
+        Bio: _propTypesDefault.default.string.isRequired,
+        Birthyear: _propTypesDefault.default.string.isRequired,
+        Deathyear: _propTypesDefault.default.string.isRequired
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired
 };

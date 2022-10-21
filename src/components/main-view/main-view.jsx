@@ -31,9 +31,16 @@ export class MainView extends React.Component {
 
   setSelectedMovie(newSelectedMovie) {
     this.setState({
-      selectedMovie: Movie
+      selectedMovie: newSelectedMovie
     });
   }
+
+  onLoggedIn(user) {
+    this.setState({
+      user
+    });
+  }//make sure this is in main-view to call login code or it won't be defined
+
   render() {
     const { movies, selectedMovie, user } = this.state;
 
