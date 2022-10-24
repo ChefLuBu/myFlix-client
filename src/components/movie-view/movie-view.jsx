@@ -1,10 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { RegistrationView } from '../registration-view/registration-view';
-import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
 
 export class MovieView extends React.Component {
 
@@ -24,7 +20,7 @@ export class MovieView extends React.Component {
     return (
         <div className="movie-view">
         <div className="movie-poster">
-          <img crossOrigin="" style={{
+          <img crossOrigin="anonymous" style={{
             resizeMode: "cover",
             height: 508,
             width: 343}} src={movie.imgUrl} />
