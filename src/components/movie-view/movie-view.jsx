@@ -1,6 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { RegistrationView } from '../registration-view/registration-view';
+import { LoginView } from '../login-view/login-view';
+import { MovieCard } from '../movie-card/movie-card';
+import { MovieView } from '../movie-view/movie-view';
 
 export class MovieView extends React.Component {
 
@@ -20,7 +24,10 @@ export class MovieView extends React.Component {
     return (
         <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.imgUrl} />
+          <img crossOrigin="" style={{
+            resizeMode: "cover",
+            height: 508,
+            width: 343}} src={movie.imgUrl} />
         </div>
         <div className="movie-title">
           <span className="title">Title: </span>
@@ -64,9 +71,10 @@ export class MovieView extends React.Component {
     );
   }
 }
-//These must be called here and on movie card in order 
+// These must be called here and on movie card in order 
 //for them to render the objects correcty
-MovieCard.propTypes = {
+
+MovieView.propTypes = {
     movie: PropTypes.shape({
       Title: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired,
@@ -80,5 +88,5 @@ MovieCard.propTypes = {
         Birthyear:PropTypes.string.isRequired,
         Deathyear: PropTypes.string.isRequired}),
     }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+    onBackClick: PropTypes.func.isRequired
   };
