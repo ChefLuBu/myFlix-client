@@ -20,7 +20,7 @@ export class MovieView extends React.Component {
     return (
         <div className="movie-view">
         <div className="movie-poster">
-          <img crossOrigin="anonymous" style={{
+          <img style={{ crossorigin:"anonymous",
             resizeMode: "cover",
             height: 508,
             width: 343}} src={movie.imgUrl} />
