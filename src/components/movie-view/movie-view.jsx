@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button, Card, CardGroup, Container, Col, Row, Form } from 'react-bootstrap';
 
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
@@ -20,10 +22,11 @@ export class MovieView extends React.Component {
     return (
         <div className="movie-view">
         <div className="movie-poster">
-          <img crossorigin="anonymous"  style={{
+          <img crossOrigin="anonymous"  style={{
             resizeMode: "cover",
             height: 508,
-            width: 343}}  src={movie.imgUrl} />
+            width: 343
+            }} src={movie.imgUrl} />
         </div>
         <div className="movie-title">
           <span className="title">Title: </span>
@@ -63,6 +66,9 @@ export class MovieView extends React.Component {
           }}>
           Back
         </button>
+        <br/>
+        <Button className="ml-2 my-2">Add to Favorites</Button>
+            <Button className="ml-2">Remove from Favorites</Button>
       </div>
     );
   }
