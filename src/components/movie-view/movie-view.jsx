@@ -54,7 +54,7 @@ export class MovieView extends React.Component {
         </div>
         <div className="director-birthyear">
           <span className="director">BirthYear: </span>
-          <span className="value">{movie.Director.BirthYear}</span>
+          <span className="value">{movie.Director.Birthyear}</span>
         </div>
         <div className="director-deathyear">
           <span className="director">Deathyear: </span>

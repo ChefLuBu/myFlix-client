@@ -1,0 +1,26 @@
+form {
+  background: #f1f1f1;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.movieCard {
+  font-weight: 500;
+}
+.movie-view {
+  font-weight: 500;
+}
+.main-view {
+  font-weight: 500;
+  font-size: small;
+}
+body {
+  background: rgba(0, 0, 0, 0);
+}
+/*# sourceMappingURL=index.1d334ea1.css.map */
