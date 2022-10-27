@@ -1,31 +1,36 @@
+body {
+  background: none;
+}
+
 form {
   background: #f1f1f1;
+  border-radius: .5em;
   padding: 1em;
-  border-radius: 0.5em;
 }
 
 .center {
-  display: flex;
+  height: 100vh;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  display: flex;
 }
+
 .movieCard {
   font-weight: 500;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px #00000080;
 }
+
 .movie-view {
   font-weight: 500;
 }
+
 .main-view {
-  font-weight: 500;
   font-size: small;
+  font-weight: 500;
 }
 
 .main-view > div {
   display: flex;
 }
-body {
-  background: rgba(0, 0, 0, 0);
-}
-/*# sourceMappingURL=index.1d334ea1.css.map */
+
+/*# sourceMappingURL=index.ce1d6491.css.map */

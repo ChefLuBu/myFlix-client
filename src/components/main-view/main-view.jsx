@@ -2,33 +2,51 @@ import React from "react";
 import axios from "axios";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-import './main-view.scss';
+import { RegistrationView } from "../registration-view/registration-view";
+import "./main-view.scss";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null,
+      //   selectedMovie: null,
       user: null,
     };
   }
 
-  componentDidMount() {
+  getMovies(token) {
     axios
-      .get("https://mykungfuflix.herokuapp.com/movies")
+      .get("https://mykungfuflix.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
+        // Assign the result to the state
         this.setState({
           movies: response.data,
         });
       })
-      .catch((error) => {
+      .catch(function (error) {
         console.log(error);
       });
+  }
+
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem("user"),
+      });
+      this.getMovies(accessToken);
+    }
   }
 
   setSelectedMovie(newSelectedMovie) {
@@ -37,47 +55,75 @@ export class MainView extends React.Component {
     });
   }
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user,
+      user: authData.user.Username,
     });
-  } //make sure this is in main-view to call login code or it won't be defined
+
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.setState({
+      user: null,
+    });
+  }
 
   render() {
     const { movies, selectedMovie, user } = this.state;
 
     if (!user)
-      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-
+      return (
+        <Row>
+          <Col>
+            <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+          </Col>
+        </Row>
+      );
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-    <div  className="background">   
-      <Row className="main-view justify-content-md-center">
-        {selectedMovie ? (
-          <Col md={8}  >
-            <MovieView
-              movie={selectedMovie}
-              onBackClick={(newSelectedMovie) => {
-                this.setSelectedMovie(newSelectedMovie);
+      <BrowserRouter>
+        <Routes>
+          <Row className="main-view justify-content-md-center">
+            <Route
+              path="/"
+              render={() => {
+                return movies.map((m) => (
+                  <Col md={3} key={m._id}>
+                    <MovieCard movie={m} />
+                  </Col>
+                ));
               }}
             />
-          </Col>
-        ) : (
-          movies.map((movie) => (
-            <Col md={3}>
-              <MovieCard
-                key={movie._id}
-                movie={movie}
-                onMovieClick={(newSelectedMovie) => {
-                  this.setSelectedMovie(newSelectedMovie);
-                }}
-              />
-            </Col>
-          ))
-        )}
-      </Row>
-     </div>
+            <Route
+              path="/movies/:movieId"
+              render={({ match }) => {
+                return (
+                  <Col md={8}>
+                    <MovieView
+                      movie={movies.find((m) => m._id === match.params.movieId)}
+                    />
+                  </Col>
+                );
+              }}
+            />
+          </Row>
+
+          <button
+            onClick={() => {
+              this.onLoggedOut();
+            }}
+          >
+            Logout
+          </button>
+        </Routes>
+      </BrowserRouter>
     );
   }
 }
