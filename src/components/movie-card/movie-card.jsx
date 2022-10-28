@@ -8,7 +8,7 @@ import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie, onMovieClick } = this.props;
+    const { movie } = this.props;
 
     return (
       <Card className="movieCard mt-3 mb-3">
@@ -18,7 +18,7 @@ export class MovieCard extends React.Component {
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={() => onMovieClick(movie)} variant="link">See More</Button>
+          {/* <Button onClick={() => onMovieClick(movie)} variant="link">See More</Button> */}
         </Card.Body>
       </Card>
     );
@@ -39,5 +39,5 @@ MovieCard.propTypes = {
         Birthyear:PropTypes.string.isRequired,
         Deathyear: PropTypes.string.isRequired}),
     }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+    onMovieClick: PropTypes.func,
   };

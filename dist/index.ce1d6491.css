@@ -15,15 +15,6 @@ form {
   display: flex;
 }
 
-.movieCard {
-  font-weight: 500;
-  box-shadow: 0 10px 10px #00000080;
-}
-
-.movie-view {
-  font-weight: 500;
-}
-
 .main-view {
   font-size: small;
   font-weight: 500;
@@ -31,6 +22,15 @@ form {
 
 .main-view > div {
   display: flex;
+}
+
+.movieCard {
+  font-weight: 500;
+  box-shadow: 0 10px 10px #00000080;
+}
+
+.movie-view {
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

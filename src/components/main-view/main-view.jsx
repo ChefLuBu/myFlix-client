@@ -5,8 +5,8 @@ import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { LoginView } from "../login-view/login-view";
-import { MovieCard } from "../movie-card/movie-card";
-import { MovieView } from "../movie-view/movie-view";
+import { MoviesList } from "../movies-list/movies-list";
+import { MoviesViewer } from "../movies-viewer/movies-viewer";
 import { RegistrationView } from "../registration-view/registration-view";
 import "./main-view.scss";
 
@@ -90,38 +90,10 @@ export class MainView extends React.Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Row className="main-view justify-content-md-center">
-            <Route
-              path="/"
-              render={() => {
-                return movies.map((m) => (
-                  <Col md={3} key={m._id}>
-                    <MovieCard movie={m} />
-                  </Col>
-                ));
-              }}
-            />
-            <Route
-              path="/movies/:movieId"
-              render={({ match }) => {
-                return (
-                  <Col md={8}>
-                    <MovieView
-                      movie={movies.find((m) => m._id === match.params.movieId)}
-                    />
-                  </Col>
-                );
-              }}
-            />
-          </Row>
+          <Route path="/" element={<MoviesList movies={movies} />} />
 
-          <button
-            onClick={() => {
-              this.onLoggedOut();
-            }}
-          >
-            Logout
-          </button>
+          <Route path="/movies/:movieId" element={<MoviesViewer selectedMovies={movies} />} />
+            
         </Routes>
       </BrowserRouter>
     );
