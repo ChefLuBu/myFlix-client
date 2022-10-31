@@ -10,11 +10,9 @@ export function MoviesList(props) {
       {movies.map((m) => (
         <Col md={3} key={m._id}>
           <MovieCard movie={m} />
-        </Col>,
-        <>
-        {/* <Button key="seeMore" onClick={() => onMovieClick(movie)} variant="link">See More</Button> */}
-</>
-      ))}
+        </Col>
+      ))
+    }
     </>
   );
 }
