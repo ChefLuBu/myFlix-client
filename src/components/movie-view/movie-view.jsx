@@ -1,32 +1,41 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Card, CardGroup, Container, Col, Row, Form } from 'react-bootstrap';
+import {
+  Button,
+  Card,
+  CardGroup,
+  Container,
+  Col,
+  Row,
+  Form,
+} from "react-bootstrap";
 
-import './movie-view.scss';
+import "./movie-view.scss";
 
 export class MovieView extends React.Component {
+  keypressCallback(event) {
+    console.log(event.key);
+  }
 
-    keypressCallback(event) {
-        console.log(event.key);
-      }
-    
-      componentDidMount() {
-        document.addEventListener('keypress', this.keypressCallback);
-      }
-    
-    
+  componentDidMount() {
+    document.addEventListener("keypress", this.keypressCallback);
+  }
 
   render() {
     const { movie, onBackClick } = this.props;
 
     return (
-        <div className="movie-view">
+      <div className="movie-view">
         <div className="movie-poster">
-          <img crossOrigin="anonymous" style={{
-            resizeMode: "cover",
-            height: "508px",
-            width: "343px"
-            }} src={movie.imgUrl} />
+          <img
+            crossOrigin="anonymous"
+            style={{
+              resizeMode: "cover",
+              height: "508px",
+              width: "343px",
+            }}
+            src={movie.imgUrl}
+          />
         </div>
         <div className="movie-title">
           <span className="title">Title: </span>
@@ -63,32 +72,41 @@ export class MovieView extends React.Component {
         <button
           onClick={() => {
             onBackClick(null);
-          }}>
+          }}
+        >
           Back
         </button>
-        <br/>
+        <Link to={`/directors/${movie.Director.Name}`}>
+          <Button variant="link">Director</Button>
+        </Link>
+
+        <Link to={`/genres/${movie.Genre.Name}`}>
+          <Button variant="link">Genre</Button>
+        </Link>
+        <br />
         <Button className="ml-2 my-2">Add to Favorites</Button>
-            <Button className="ml-2">Remove from Favorites</Button>
+        <Button className="ml-2">Remove from Favorites</Button>
       </div>
     );
   }
 }
-// These must be called here and on movie card in order 
+// These must be called here and on movie card in order
 //for them to render the objects correcty
 
 MovieView.propTypes = {
-    movie: PropTypes.shape({
-      Title: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-      imgUrl: PropTypes.string.isRequired,
-      Genre: PropTypes.shape({
-        Name: PropTypes.string.isRequired
-      }),
-      Director: PropTypes.shape({
-        Name: PropTypes.string.isRequired,
-        Bio: PropTypes.string.isRequired,
-        Birthyear:PropTypes.string.isRequired,
-        Deathyear: PropTypes.string.isRequired}),
-    }).isRequired,
-    onBackClick: PropTypes.func.isRequired
-  };
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    imgUrl: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birthyear: PropTypes.string.isRequired,
+      Deathyear: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
+};
