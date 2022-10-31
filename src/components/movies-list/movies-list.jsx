@@ -1,10 +1,10 @@
 import { MovieCard } from "../movie-card/movie-card";
 import Col from "react-bootstrap/Col";
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 
 
 export function MoviesList(props) {
-    const { movies, button } = props;
+    const { movies } = props;
   return (
     <>
       {movies.map((m) => (
@@ -12,7 +12,7 @@ export function MoviesList(props) {
           <MovieCard movie={m} />
         </Col>,
         <>
-        <Button key="seeMore" onClick={() => onMovieClick(movie)} variant="link">See More</Button>
+        {/* <Button key="seeMore" onClick={() => onMovieClick(movie)} variant="link">See More</Button> */}
 </>
       ))}
     </>

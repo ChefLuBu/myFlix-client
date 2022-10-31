@@ -6,8 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { LoginView } from "../login-view/login-view";
 import { MoviesList } from "../movies-list/movies-list";
-import { MovieView } from "../movie-view/movie-view";
-import { RegistrationView } from "../registration-view/registration-view";
+// import { MovieView } from "../movie-view/movie-view";
+// import { RegistrationView } from "../registration-view/registration-view";
 import "./main-view.scss";
 
 import Row from "react-bootstrap/Row";
@@ -92,7 +92,7 @@ export class MainView extends React.Component {
         <Routes>
           <Route path="/" element={<MoviesList movies={movies} />} />
 
-          <Route path="/movies/:movieId" element={<MovieView movies/>} />
+          {/* <Route path="/movies/:movieId" element={<MovieView />} /> */}
             
         </Routes>
       </BrowserRouter>
