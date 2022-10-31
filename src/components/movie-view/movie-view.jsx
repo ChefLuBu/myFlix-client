@@ -9,6 +9,7 @@ import {
   Row,
   Form,
 } from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 import "./movie-view.scss";
 
@@ -80,7 +81,7 @@ export class MovieView extends React.Component {
           <Button variant="link">Director</Button>
         </Link>
 
-        <Link to={`/genres/${movie.Genre.Name}`}>
+        <Link to={`/genre/${movie.Genre.Name}`}>
           <Button variant="link">Genre</Button>
         </Link>
         <br />

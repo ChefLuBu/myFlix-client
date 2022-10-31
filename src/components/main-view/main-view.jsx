@@ -2,13 +2,17 @@ import React from "react";
 import axios from "axios";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { BrowserRouter as Route, Router } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import NavBar from '../navbar/navbar'
 
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import "./main-view.scss";
+import { DirectorsView } from "../directors-view/directors-view";
+import { GenreView } from "../genre-view/genre-view";
+
 
 export class MainView extends React.Component {
   constructor() {
@@ -85,7 +89,8 @@ export class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <Router>
+      <BrowserRouter>
+              <NavBar />
         <Row className="main-view justify-content-md-center">
           <Route
             exact
@@ -102,7 +107,7 @@ export class MainView extends React.Component {
           <Route
             exact
             path="/movies/:movieId"
-            render={({ match }) => {
+            render={({ match, history }) => {
               return (
                 <Col md={8}>
                   <MovieView
@@ -116,8 +121,8 @@ export class MainView extends React.Component {
 
           <Route
             exact
-            path="/:genre/:name"
-            render={({ match }) => {
+            path="/genre/:name"
+            render={({ match, history }) => {
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
@@ -135,12 +140,12 @@ export class MainView extends React.Component {
 
           <Route
             exact
-            path="/:directors/:name"
-            render={({ match }) => {
+            path="/directors/:name"
+            render={({ match, history }) => {
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
-                  <DirectorView
+                  <DirectorsView
                     director={
                       movies.find((m) => m.Director.Name === match.params.name)
                         .Director
@@ -152,7 +157,7 @@ export class MainView extends React.Component {
             }}
           />
         </Row>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
