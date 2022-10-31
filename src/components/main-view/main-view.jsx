@@ -92,7 +92,7 @@ export class MainView extends React.Component {
         <Routes>
           <Route path="/" element={<MoviesList movies={movies} />} />
 
-          {/* <Route path="/movies/:movieId" element={<MovieView />} /> */}
+          <Route path="/movies/:movieId" element={<selectedMovie />} />
             
         </Routes>
       </BrowserRouter>
