@@ -3,16 +3,16 @@ import axios from "axios";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Route } from "react-router-dom";
-// import Menubar from "../navbar/navbar";
+import { Menubar } from "../navbar/navbar";
 
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-// import { RegistrationView } from "../registration-view/registration-view";
+import { RegistrationView } from "../registration-view/registration-view";
 import "./main-view.scss";
 import { DirectorsView } from "../directors-view/directors-view";
 import { GenreView } from "../genre-view/genre-view";
-// import { ProfileView } from "../profile-view/profile-view"
+import { ProfileView } from "../profile-view/profile-view";
 
 export class MainView extends React.Component {
   constructor() {
@@ -30,6 +30,7 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        console.log(response)
         this.setState({
           movies: response.data,
         });
@@ -77,33 +78,32 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.state;
 
-    if (!user)
-      return (
-        <Row>
-          <Col>
-            <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-          </Col>
-        </Row>
-      );
-    if (movies.length === 0) return <div className="main-view">No Movies</div>;
-
+    
+console.log(movies)
     return (
       <BrowserRouter>
-        {/* <Menubar user={user} /> */}
+        <Menubar user={user} />
         <Row className="main-view justify-content-md-center">
           <Route
             exact
             path="/"
             render={() => {
+              console.log(movies)
+              if (!user){
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );}
+          // if (movies.length === 0) return <div className="main-view"></div>;
               return movies.map((m) => (
                 <Col md={3} key={m._id}>
-                  {" "}
                   <MovieCard movie={m} />
                 </Col>
               ));
             }}
           />
-          {/* <Route
+          <Route
             path="/register"
             render={() => {
               if (user) return <redirect to="/" />;
@@ -113,12 +113,18 @@ export class MainView extends React.Component {
                 </Col>
               );
             }}
-          /> */}
+          />
 
           <Route
             exact
             path="/movies/:movieId"
             render={({ match, history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
               return (
                 <Col md={8}>
                   <MovieView
@@ -134,11 +140,17 @@ export class MainView extends React.Component {
             exact
             path="/genre/:name"
             render={({ match, history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
                   <GenreView
-                     genreMovies={movies.filter(
+                    genreMovies={movies.filter(
                       (movie) => movie.Genre.Name === match.params.name
                     )}
                     genre={movies.find(
@@ -155,16 +167,22 @@ export class MainView extends React.Component {
             exact
             path="/directors/:name"
             render={({ match, history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
                   <DirectorsView
-                      directorMovies={movies.filter(
-                        (movie) => movie.Director.Name === match.params.name
-                      )}
-                      director={movies.find(
-                        (m) => m.Director.Name === match.params.name
-                      )}
+                    directorMovies={movies.filter(
+                      (movie) => movie.Director.Name === match.params.name
+                    )}
+                    director={movies.find(
+                      (m) => m.Director.Name === match.params.name
+                    )}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -172,9 +190,15 @@ export class MainView extends React.Component {
             }}
           />
 
-          {/* <Route
+          <Route
             path={`/users/${user}`}
             render={({ match, history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
               if (!user) return <Redicrect to="/" />;
               return (
                 <Col>
@@ -190,6 +214,12 @@ export class MainView extends React.Component {
           <Route
             path={`/user-update/${user}`}
             render={({ match, history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
               if (!user) return <Redirect to="/" />;
               return (
                 <Col>
@@ -200,7 +230,7 @@ export class MainView extends React.Component {
                 </Col>
               );
             }}
-          /> */}
+          />
         </Row>
       </BrowserRouter>
     );

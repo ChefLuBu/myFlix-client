@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Container, Col, Row } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
-// import "./genre-view.scss"
+import "./genre-view.scss"
 
 export class GenreView extends React.Component {
   render() {
@@ -26,7 +26,7 @@ export class GenreView extends React.Component {
 
           <Row>
             {genreMovies.map((movie) => (
-              <Col lg={4} md={6}>
+              <Col lg={6} md={6}>
                 <MovieCard key={movie._id} movie={movie}>
                   {movie.Title}
                 </MovieCard>

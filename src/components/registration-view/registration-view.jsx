@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Row, Col, Button, Form } from "react-bootstrap";
+
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -48,7 +50,6 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthday);
-    props.Registration(username);
     const isReq = validate();
     if (isReq) {
       axios
@@ -74,47 +75,57 @@ export function RegistrationView(props) {
   return (
     <Row className="mt-5">
       <Col md={12}>
-        <form>
+        <Form>
           <h1>Registration</h1>
-          <label>
+          <Form.Group>
+          <Form.Label>
             Username:
-            <input
+            </Form.Label>
+            <Form.Control
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             {values.usernameErr && <p>{values.usernameErr}</p>}
-          </label>
-          <label>
+            </Form.Group>
+          <Form.Group>
+          <Form.Label>
             Password:
-            <input
+            </Form.Label>
+
+            <Form.Control
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             {values.passwordErr && <p>{values.passwordErr}</p>}
-          </label>
-          <label>
+            </Form.Group>
+            <Form.Group>
+          <Form.Label>
             Email:
-            <input
+            </Form.Label>
+
+            <Form.Control
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             {values.emailErr && <p>{values.emailErr}</p>}
-          </label>
-          <label>
+            </Form.Group>
+            <Form.Group>
+          <Form.Label>
             Birthday:
-            <input
+            </Form.Label>
+            <Form.Control
               type="birthday"
               value={birthday}
               onChange={(e) => setBirthday(e.target.value)}
             />
-          </label>
+            </Form.Group>
           <Button variant='primary' type="submit" onClick={handleSubmit}>
             Submit
           </Button>
-        </form>
+        </Form>
       </Col>
     </Row>
   );

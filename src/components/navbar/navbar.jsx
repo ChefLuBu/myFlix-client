@@ -36,25 +36,27 @@ export function Menubar({ user }) {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand className="navbar-logo" href="/">
+        <Navbar.Brand className="navbar-logo" href="/" >
           Kung Fu Flix
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            {isAuth() && <Nav.Link href={`/users/${user}`}></Nav.Link>}
+            {isAuth() && <Nav.Link to={`/users/${user}`} as={Link}>Profile</Nav.Link>}
+            {isAuth() && <Nav.Link to={`/movies/${user}`}>as={Link}</Nav.Link>}
             {isAuth() && (
-              <Button
+           
+              <Button className="dropdown-button"
                 Variant="link"
                 onClick={() => {
-                  this.onLoggedOut();
+                  onLoggedOut();
                 }}
               >
                 Logout
               </Button>
             )}
-            {!isAuth() && <Nav.Link href="/">Sign-in</Nav.Link>}
-            {!isAuth() && <Nav.Link herf="/register">Sign-up</Nav.Link>}
+            {!isAuth() && <Nav.Link to="/" as={Link}>Sign-in</Nav.Link>}
+            {!isAuth() && <Nav.Link to="/register" as={Link}>Sign-up</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Container>

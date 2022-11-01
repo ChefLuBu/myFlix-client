@@ -111,7 +111,6 @@ export class ProfileView extends React.Component {
     }
   };
   removeFavoriteMovie = (movieId) => {
-    // e.preventDefault();
     const username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     axios
@@ -289,4 +288,3 @@ let mapStateToProps = (state) => {
   };
 };
 
-// export default connect(mapStateToProps, { setUser, setMovies })(ProfileView);
