@@ -1,19 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Button,
-  Card,
-  CardGroup,
-  Container,
-  Col,
-  Row,
-  Form,
-} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
 import "./movie-view.scss";
 
 export class MovieView extends React.Component {
+
+addMovieToFavorites(e) {
+  const { movie } = this.props;
+  const username = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+e.preventDefault();
+axios
+  .post(
+    `https://kungfuflix.herokuapp.com/users/${username}/movies/${movie._id}`,
+    { username: localStorage.getItem("user") },
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  )
+  .then((response) => {
+    console.log(response);
+    alert("Movie added");
+  })
+  .catch((error) => console.error(error));
+}
+
+
+
+
   keypressCallback(event) {
     console.log(event.key);
   }
@@ -24,7 +41,6 @@ export class MovieView extends React.Component {
 
   render() {
     const { movie, onBackClick } = this.props;
-
     return (
       <div className="movie-view">
         <div className="movie-poster">
@@ -85,8 +101,7 @@ export class MovieView extends React.Component {
           <Button variant="link">Genre</Button>
         </Link>
         <br />
-        <Button className="ml-2 my-2">Add to Favorites</Button>
-        <Button className="ml-2">Remove from Favorites</Button>
+        <Button className="ml-2 my-2" variant="sucess" onClick={(e) => this.addMovieToFavorites(e)} >Add to Favorites</Button>
       </div>
     );
   }

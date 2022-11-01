@@ -21,41 +21,41 @@ export function LoginView(props) {
 
 
 
-  // const validate = () => {
-  //   let isReq = true;
-  //   if (!username) {
-  //     setUsernameErr(<span style={{ color: "red" }}>Username Required!</span>);
-  //     isReq = false;
-  //   } else if (username.length < 2) {
-  //     setUsernameErr(
-  //       <span style={{ color: "red" }}>
-  //         Username must be 2 characters long!
-  //       </span>
-  //     );
-  //     isReq = false;
-  //   }
-  //   if (!password) {
-  //     setPasswordErr(<span style={{ color: "red" }}>Password Required!</span>);
-  //     isReq = false;
-  //   } else if (password.length < 6) {
-  //     setPassword(
-  //       <span style={{ color: "red" }}>
-  //         Password must be 6 characters long!
-  //       </span>
-  //     );
-  //     isReq = false;
-  //   }
+  const validate = () => {
+    let isReq = true;
+    if (!username) {
+      setUsernameErr(<span style={{ color: "red" }}>Username Required!</span>);
+      isReq = false;
+    } else if (username.length < 2) {
+      setUsernameErr(
+        <span style={{ color: "red" }}>
+          Username must be 2 characters long!
+        </span>
+      );
+      isReq = false;
+    }
+    if (!password) {
+      setPasswordErr(<span style={{ color: "red" }}>Password Required!</span>);
+      isReq = false;
+    } else if (password.length < 6) {
+      setPassword(
+        <span style={{ color: "red" }}>
+          Password must be 6 characters long!
+        </span>
+      );
+      isReq = false;
+    }
 
-  //   return isReq;
-  // };
+    return isReq;
+  };
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     /* Send a request to the server for authentication */
 
-    // const isReq = validate();
-    // if (isReq) {
+    const isReq = validate();
+    if (isReq) {
     axios
       .post("https://mykungfuflix.herokuapp.com/login", {
         Username: username,
@@ -68,6 +68,7 @@ export function LoginView(props) {
       .catch((e) => {
         console.log("no such user");
       });
+    }
   };
 
   return (

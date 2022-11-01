@@ -4,12 +4,7 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import "./navbar.scss";
 
 export function Menubar({ user }) {
-  // const NavBar = (props) => {
-  //     return (<div>
-  //         <Link to={"/"} ><h1>Kung Fu Flix</h1></Link>
-  //     </div>
-  //     );
-  // }
+
 
   const onLoggedOut = () => {
     localStorage.clear();
@@ -36,14 +31,14 @@ export function Menubar({ user }) {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand className="navbar-logo" href="/" >
-          Kung Fu Flix
+        <Navbar.Brand className="navbar-logo" to="/" as={Link} >
+         <img src={"/img/logo.png"} />
+          {/* Kung Fu Flix */}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
             {isAuth() && <Nav.Link to={`/users/${user}`} as={Link}>Profile</Nav.Link>}
-            {isAuth() && <Nav.Link to={`/movies/${user}`}>as={Link}</Nav.Link>}
             {isAuth() && (
            
               <Button className="dropdown-button"

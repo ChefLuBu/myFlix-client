@@ -95,7 +95,7 @@ console.log(movies)
                     <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                   </Col>
                 );}
-          // if (movies.length === 0) return <div className="main-view"></div>;
+          if (movies.length === 0) return <div className="main-view"></div>;
               return movies.map((m) => (
                 <Col md={3} key={m._id}>
                   <MovieCard movie={m} />
