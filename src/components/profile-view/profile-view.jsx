@@ -9,11 +9,10 @@ import {
   Card,
   Figure,
 } from "react-bootstrap";
-// import moment from "moment";
+import moment from "moment";
 import { Link } from "react-router-dom";
 import "./profile-view.scss";
-// import { connect } from "react-redux";
-// import { setUser, setMovies } from "../../actions/actions";
+
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -29,7 +28,6 @@ export class ProfileView extends React.Component {
 
   componentDidMount() {
     this.getUser();
-    console.log("this.props", this.props);
   }
 
   getUser = () => {
@@ -49,7 +47,6 @@ export class ProfileView extends React.Component {
         });
       })
       .catch(function (error) {
-        console.log(error);
       });
   };
 
@@ -69,7 +66,6 @@ export class ProfileView extends React.Component {
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
-        console.log("response", response);
         alert("Profile was successfully updated");
         this.setState({
           username: response.data.username,
@@ -121,7 +117,6 @@ export class ProfileView extends React.Component {
         }
       )
       .then((response) => {
-        console.log(response);
         alert("Movie was removed");
         this.componentDidMount();
       })
@@ -172,7 +167,7 @@ export class ProfileView extends React.Component {
                 <Card.Text>Username: {user}</Card.Text>
                 <Card.Text>Email: {Email}</Card.Text>
                 <Card.Text>
-                  {/* Birthday: {moment(Birthday).format("Do MMMM YYYY")} */}
+                  Birthday: {moment(Birthday).format("Do MMMM YYYY")}
                 </Card.Text>
               </Card.Body>
             </Card>
