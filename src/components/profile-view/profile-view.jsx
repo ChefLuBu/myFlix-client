@@ -42,10 +42,10 @@ export class ProfileView extends React.Component {
       })
       .then((response) => {
         this.setState({
-          Username: response.data.username,
-          Password: response.data.password,
-          Email: response.data.email,
-          Birthday: response.data.birthday,
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
           favoriteMovies: response.data.favoriteMovies,
         });
       })
@@ -205,7 +205,7 @@ console.log(data)
                 <Form.Group className='mb-4' controlId='formEmail'>
                   <Form.Label>Email</Form.Label>
                   <Form.Control
-                    type='type'
+                    type='text'
                     name='Email'
                     placeholder={this.state.Email}
                     onSubmit={(e) => this.setEmail(e.target.value)}
@@ -215,7 +215,7 @@ console.log(data)
                 <Form.Group className='mb-4' controlId='formBirthday'>
                   <Form.Label>Birthday</Form.Label>
                   <Form.Control
-                    type='date'
+                    type='text'
                     name='Birthday'
                     placeholder={this.state.Birthday}
                     onSubmit={(e) => this.setBirthday(e.target.value)}

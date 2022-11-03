@@ -41958,10 +41958,10 @@ class ProfileView extends (0, _reactDefault.default).Component {
             }
         }).then((response)=>{
             this.setState({
-                Username: response.data.username,
-                Password: response.data.password,
-                Email: response.data.email,
-                Birthday: response.data.birthday,
+                Username: response.data.Username,
+                Password: response.data.Password,
+                Email: response.data.Email,
+                Birthday: response.data.Birthday,
                 favoriteMovies: response.data.favoriteMovies
             });
         }).catch(function(error) {
@@ -42201,7 +42201,7 @@ class ProfileView extends (0, _reactDefault.default).Component {
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                                        type: "type",
+                                                        type: "text",
                                                         name: "Email",
                                                         placeholder: this.state.Email,
                                                         onSubmit: (e)=>this.setEmail(e.target.value),
@@ -42229,7 +42229,7 @@ class ProfileView extends (0, _reactDefault.default).Component {
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                                        type: "date",
+                                                        type: "text",
                                                         name: "Birthday",
                                                         placeholder: this.state.Birthday,
                                                         onSubmit: (e)=>this.setBirthday(e.target.value)
