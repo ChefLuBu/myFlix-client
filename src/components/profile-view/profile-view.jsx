@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import "./profile-view.scss";
 
 
+
+
 export class ProfileView extends React.Component {
   constructor() {
     super();
@@ -28,21 +30,22 @@ export class ProfileView extends React.Component {
 
   componentDidMount() {
     this.getUser();
+    console.log("this.props", this.props)
   }
 
   getUser = () => {
-    const username = localStorage.getItem("user");
+    const Username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    axios
-      .get(`https://mykungfuflix.herokuapp.com/users/${username}`, {
+      axios
+      .get(`https://mykungfuflix.herokuapp.com/users/${Username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         this.setState({
-          username: response.data.Username,
-          password: response.data.Password,
-          email: response.data.Email,
-          birthday: response.data.Birthday,
+          Username: response.data.username,
+          Password: response.data.password,
+          Email: response.data.email,
+          Birthday: response.data.birthday,
           favoriteMovies: response.data.favoriteMovies,
         });
       })
@@ -70,12 +73,12 @@ export class ProfileView extends React.Component {
         alert("Profile was successfully updated");
         this.setState({
           username: response.data.Username,
-          Password: response.data.password,
+          Password: response.data.Password,
           Email: response.data.Email,
-          Birthday: response.data.Birthday,
+          Birthday: response.data.Birthday
         });
         localStorage.setItem("user", data.Username);
-
+console.log(data)
         window.location.pathname = "/";
       })
       .catch(function (error) {
@@ -102,7 +105,7 @@ export class ProfileView extends React.Component {
           alert("Profile successfully deleted");
           window.location.pathname = "/";
         })
-        .catch((e) => {
+        .catch((error) => {
           console.log(error);
         });
     }
@@ -153,13 +156,11 @@ export class ProfileView extends React.Component {
   render() {
     const { movies, user } = this.props;
     const { favoriteMovies, Email, Birthday } = this.state;
-console.log(user)
-console.log(Email)
-console.log(Birthday)
+
     const favoriteMovie = favoriteMovies.map((movieId) =>
       movies.find((movie) => movie._id === movieId)
     );
-
+   
     return (
       <Container>
         <Row>

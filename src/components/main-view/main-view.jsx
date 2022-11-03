@@ -43,7 +43,7 @@ export class MainView extends React.Component {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
       this.setState({
-        user: localStorage.getItem("user"),
+        user: localStorage.getItem("user","birthday","email"),
       });
       this.getMovies(accessToken);
     }
@@ -56,21 +56,28 @@ export class MainView extends React.Component {
   }
 
   onLoggedIn(authData) {
-    console.log(authData);
+    const { Username, Email, Birthday, FavoriteMovies } = authData.user;
     this.setState({
       user: authData.user.Username,
+      email: Email,
+      birthday: Birthday,
+      favoriteMovies: FavoriteMovies,
+      username: Username,
     });
-
-    localStorage.setItem("token", authData.token);
-    localStorage.setItem("user", authData.user.Username);
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', Username);
+    localStorage.setItem('birthday', Birthday);
+    localStorage.setItem('email', Email);
+    localStorage.setItem('favoriteMovies', FavoriteMovies);
     this.getMovies(authData.token);
+    this.getTitleList(FavoriteMovies);
   }
 
   onLoggedOut() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.setState({
-      user: null,
+      user: null
     });
   }
 
