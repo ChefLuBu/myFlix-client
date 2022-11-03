@@ -18,6 +18,9 @@ export function RegistrationView(props) {
   const validate = () => {
     let isReq = true;
         if (!username) {
+          console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
       setValues({ ...values, usernameErr: "Username Required" });
       isReq = false;
     } else if (username.length < 5) {
@@ -33,7 +36,7 @@ export function RegistrationView(props) {
     } else if (password.length < 6) {
       setValues({
         ...values,
-        passwordErr: "passowrd must be 6 characters long",
+        passwordErr: "password must be 6 characters long",
       });
       isReq = false;
     }
@@ -137,5 +140,4 @@ RegistrationView.propTypes = {
     Username:PropTypes.string.isRequired,
     Password:PropTypes.string.isRequired,
     Email:PropTypes.string.isRequired}),
-  onRegistration: PropTypes.func.isRequired,
 };

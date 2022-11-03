@@ -18,11 +18,11 @@ export class ProfileView extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: null,
+      Username: null,
       Password: null,
       Email: null,
       Birthday: null,
-      FavouriteMovies: [],
+      favoriteMovies: [],
     };
   }
 
@@ -34,19 +34,20 @@ export class ProfileView extends React.Component {
     const username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     axios
-      .get(`https://lamptissue-movie-flix.herokuapp.com/users/${username}`, {
+      .get(`https://mykungfuflix.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         this.setState({
-          username: response.data.username,
-          Password: response.data.password,
-          Email: response.data.email,
-          Birthday: response.data.Birthday,
-          FavouriteMovies: response.data.FavouriteMovies,
+          username: response.data.Username,
+          password: response.data.Password,
+          email: response.data.Email,
+          birthday: response.data.Birthday,
+          favoriteMovies: response.data.favoriteMovies,
         });
       })
       .catch(function (error) {
+        console.log(error)
       });
   };
 
@@ -56,9 +57,9 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     axios
       .put(
-        `https://lamptissue-movie-flix.herokuapp.com/users/${username}`,
+        `https://mykungfuflix.herokuapp.com/${username}`,
         {
-          username: this.state.username,
+          username: this.state.Username,
           Password: this.state.Password,
           Email: this.state.Email,
           Birthday: this.state.Birthday,
@@ -68,12 +69,12 @@ export class ProfileView extends React.Component {
       .then((response) => {
         alert("Profile was successfully updated");
         this.setState({
-          username: response.data.username,
+          username: response.data.Username,
           Password: response.data.password,
-          Email: response.data.email,
+          Email: response.data.Email,
           Birthday: response.data.Birthday,
         });
-        localStorage.setItem("user", data.username);
+        localStorage.setItem("user", data.Username);
 
         window.location.pathname = "/";
       })
@@ -90,7 +91,7 @@ export class ProfileView extends React.Component {
       const token = localStorage.getItem("token");
       axios
         .delete(
-          `https://lamptissue-movie-flix.herokuapp.com/users/${username}`,
+          `https://mykungfuflix.herokuapp.com/users/${username}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -111,7 +112,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     axios
       .delete(
-        `https://lamptissue-movie-flix.herokuapp.com/users/${username}/movies/${movieId}`,
+        `https://mykungfuflix.herokuapp.com/users/${username}/movies/${movieId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -127,7 +128,7 @@ export class ProfileView extends React.Component {
 
   setUsername(value) {
     this.setState({
-      username: value,
+      Username: value,
     });
   }
 
@@ -143,7 +144,7 @@ export class ProfileView extends React.Component {
     });
   }
 
-  setBirth(value) {
+  setBirthday(value) {
     this.setState({
       Birthday: value,
     });
@@ -151,9 +152,11 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies, user } = this.props;
-    const { FavouriteMovies, Email, Birthday } = this.state;
-
-    const favoriteMovie = FavouriteMovies.map((movieId) =>
+    const { favoriteMovies, Email, Birthday } = this.state;
+console.log(user)
+console.log(Email)
+console.log(Birthday)
+    const favoriteMovie = favoriteMovies.map((movieId) =>
       movies.find((movie) => movie._id === movieId)
     );
 
@@ -183,38 +186,38 @@ export class ProfileView extends React.Component {
                   <Form.Control
                     type='text'
                     name='Username'
-                    placeholder={this.state.username}
-                    onChange={(e) => this.setUsername(e.target.value)}
+                    placeholder={this.state.Username}
+                    onSubmit={(e) => this.setUsername(e.target.value)}
                     required
                   />
                 </Form.Group>
                 <Form.Group className='mb-4' controlId='formPassword'>
                   <Form.Label>Password</Form.Label>
                   <Form.Control
-                    type='password'
+                    type='text'
                     name='Password'
                     placeholder='New Password'
-                    onChange={(e) => this.setPassword(e.target.value)}
+                    onSubmit={(e) => this.setPassword(e.target.value)}
                     required
                   />
                 </Form.Group>
                 <Form.Group className='mb-4' controlId='formEmail'>
                   <Form.Label>Email</Form.Label>
                   <Form.Control
-                    type='email'
+                    type='type'
                     name='Email'
                     placeholder={this.state.Email}
-                    onChange={(e) => this.setEmail(e.target.value)}
+                    onSubmit={(e) => this.setEmail(e.target.value)}
                     required
                   />
                 </Form.Group>
-                <Form.Group className='mb-4' controlId='formBirth'>
+                <Form.Group className='mb-4' controlId='formBirthday'>
                   <Form.Label>Birthday</Form.Label>
                   <Form.Control
                     type='date'
-                    name='Birth'
-                    placeholder={this.state.Birth}
-                    onChange={(e) => this.setBirth(e.target.value)}
+                    name='Birthday'
+                    placeholder={this.state.Birthday}
+                    onSubmit={(e) => this.setBirthday(e.target.value)}
                   />
                 </Form.Group>
                 <div className='d-flex justify-content-between'>
@@ -240,7 +243,7 @@ export class ProfileView extends React.Component {
         <>
           <Row>
             <Col>
-              <h4>Favourite Movies</h4>
+              <h4>Favorite Movies</h4>
             </Col>
 
             <Row>
@@ -249,7 +252,7 @@ export class ProfileView extends React.Component {
                   <Figure className='fav-movie mb-4'>
                     <Link to={`/movies/${movie._id}`}>
                       <Figure.Image
-                        src={movie.ImagePath}
+                        src={movie.imgUrl}
                         alt={movie.Title}
                       ></Figure.Image>
                       <Figure.Caption className='mb-3'>
@@ -276,10 +279,4 @@ export class ProfileView extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    movies: state.movies,
-  };
-};
 

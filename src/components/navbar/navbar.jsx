@@ -42,7 +42,6 @@ export function Menubar({ user }) {
             {isAuth() && (
            
               <Button className="dropdown-button"
-                Variant="link"
                 onClick={() => {
                   onLoggedOut();
                 }}

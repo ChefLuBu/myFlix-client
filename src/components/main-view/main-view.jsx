@@ -30,7 +30,6 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response)
         this.setState({
           movies: response.data,
         });
@@ -79,7 +78,6 @@ export class MainView extends React.Component {
     const { movies, user } = this.state;
 
     
-console.log(movies)
     return (
       <BrowserRouter>
         <Menubar user={user} />
@@ -88,7 +86,6 @@ console.log(movies)
             exact
             path="/"
             render={() => {
-              console.log(movies)
               if (!user){
                 return (
                   <Col>

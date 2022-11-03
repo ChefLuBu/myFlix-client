@@ -80,9 +80,9 @@ export function LoginView(props) {
               <Card.Body>
                 <Card.Title className="text-center mb-4">Login</Card.Title>
                 <Form>
-                  <Form.Group className="mb-3" controlId="formUsername">
+                  <Form.Group className="mb-3">
                     <Form.Control
-                      id="round-form"
+                      className="round-form"
                       type="text"
                       placeholder="Username"
                       value={username}
@@ -90,9 +90,9 @@ export function LoginView(props) {
                     />
                     {usernameErr && <p>{usernameErr}</p>}
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formPassword">
+                  <Form.Group className="mb-3">
                     <Form.Control
-                      id="round-form"
+                      className="round-form"
                       type="password"
                       placeholder="Password"
                       value={password}
