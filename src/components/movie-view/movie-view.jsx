@@ -102,8 +102,13 @@ axios
           <Button variant="link">Genre</Button>
         </Link>
         <br />
-        <Button className="ml-2 my-2" variant="sucess"  submitonClick={(e) => this.addMovieToFavorites(e)} >Add to Favorites</Button>
-      </div>
+        <Button
+            variant='success'
+            onClick={(e) => this.addMovieToFavorites(e)}
+          >
+            Add to favorites
+          </Button>
+        </div>
     );
   }
 }

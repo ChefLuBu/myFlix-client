@@ -41185,10 +41185,9 @@ class MovieView extends (0, _reactDefault.default).Component {
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                    className: "ml-2 my-2",
-                    variant: "sucess",
-                    submitonClick: (e)=>this.addMovieToFavorites(e),
-                    children: "Add to Favorites"
+                    variant: "success",
+                    onClick: (e)=>this.addMovieToFavorites(e),
+                    children: "Add to favorites"
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 105,
