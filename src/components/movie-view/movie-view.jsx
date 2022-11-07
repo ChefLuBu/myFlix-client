@@ -10,9 +10,10 @@ export class MovieView extends React.Component {
 
 addMovieToFavorites(e) {
   const { movie } = this.props;
-  const username = localStorage.getItem("user");
+  const Username = localStorage.getItem("user");
   const token = localStorage.getItem("token");
-e.preventDefault();
+  e.preventDefault();
+  
 axios
   .post(
     `https://kungfuflix.herokuapp.com/users/${username}/movies/${movie._id}`,
@@ -27,9 +28,6 @@ axios
   })
   .catch((error) => console.error(error));
 }
-
-
-
 
   keypressCallback(event) {
     console.log(event.key);
@@ -103,7 +101,7 @@ axios
         </Link>
         <br />
         <Button
-            variant='success'
+            variant='primary'
             onClick={(e) => this.addMovieToFavorites(e)}
           >
             Add to favorites
@@ -112,8 +110,7 @@ axios
     );
   }
 }
-// These must be called here and on movie card in order
-//for them to render the objects correcty
+
 
 MovieView.propTypes = {
   movie: PropTypes.shape({
