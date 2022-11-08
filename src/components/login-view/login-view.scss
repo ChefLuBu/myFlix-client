@@ -1,0 +1,14 @@
+// .background{
+//     background: linear-gradient(to bottom, #f8f8ff 0%,  #757575 35%, #f8f8ff 65%,  #a9a9a9 100% )
+// };
+form {
+    background: #f1f1f1;
+    padding: 1em;
+    border-radius: .5em;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;  
+}
