@@ -60,7 +60,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     axios
       .put(
-        `https://mykungfuflix.herokuapp.com/${username}`,
+        `https://mykungfuflix.herokuapp.com/users/${username}`,
         {
           username: this.state.Username,
           Password: this.state.Password,

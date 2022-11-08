@@ -43,7 +43,7 @@ export class MainView extends React.Component {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
       this.setState({
-        user: localStorage.getItem("user","birthday","email"),
+        user: localStorage.getItem("user", "birthday", "email"),
       });
       this.getMovies(accessToken);
     }
@@ -64,27 +64,26 @@ export class MainView extends React.Component {
       favoriteMovies: FavoriteMovies,
       username: Username,
     });
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', Username);
-    localStorage.setItem('birthday', Birthday);
-    localStorage.setItem('email', Email);
-    localStorage.setItem('favoriteMovies', FavoriteMovies);
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", Username);
+    localStorage.setItem("birthday", Birthday);
+    localStorage.setItem("email", Email);
+    localStorage.setItem("favoriteMovies", FavoriteMovies);
     this.getMovies(authData.token);
     this.getTitleList(FavoriteMovies);
   }
 
   onLoggedOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     this.setState({
-      user: null
+      user: null,
     });
   }
 
   render() {
     const { movies, user } = this.state;
 
-    
     return (
       <BrowserRouter>
         <Menubar user={user} />
@@ -93,13 +92,14 @@ export class MainView extends React.Component {
             exact
             path="/"
             render={() => {
-              if (!user){
+              if (!user) {
                 return (
                   <Col>
                     <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                   </Col>
-                );}
-          if (movies.length === 0) return <div className="main-view"></div>;
+                );
+              }
+              if (movies.length === 0) return <div className="main-view"></div>;
               return movies.map((m) => (
                 <Col md={3} key={m._id}>
                   <MovieCard movie={m} />

@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import Spinner from 'react-bootstrap/Spinner';
+
 
 import "./movie-view.scss";
 
@@ -10,14 +12,15 @@ export class MovieView extends React.Component {
 
 addMovieToFavorites(e) {
   const { movie } = this.props;
-  const Username = localStorage.getItem("user");
+  const username = localStorage.getItem("user");
   const token = localStorage.getItem("token");
   e.preventDefault();
   
+
 axios
   .post(
-    `https://kungfuflix.herokuapp.com/users/${username}/movies/${movie._id}`,
-    { username: localStorage.getItem("user") },
+    `https://mykungfuflix.herokuapp.com/users/${username}/movies/${movie._id}`,
+    {},
     {
       headers: { Authorization: `Bearer ${token}` },
     }
@@ -38,8 +41,16 @@ axios
   }
 
   render() {
-    // if (!this.props.movie) return null;
     const { movie, onBackClick } = this.props;
+ 
+    if(!movie){
+      return (
+      <Spinner animation="border" role="status">
+      <span className="visually-hidden"></span>
+      </Spinner>
+    )
+  }
+
     return (
       <div className="movie-view">
         <div className="movie-poster">
