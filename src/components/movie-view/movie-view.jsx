@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
+import { ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner';
@@ -96,27 +97,29 @@ axios
           <span className="director">Deathyear: </span>
           <span className="value">{movie.Director.Deathyear}</span>
         </div>
-        <button
-          onClick={() => {
-            onBackClick(null);
-          }}
-        >
-          Back
-        </button>
-        <Link to={`/directors/${movie.Director.Name}`}>
-          <Button variant="link">Director</Button>
-        </Link>
-
-        <Link to={`/genre/${movie.Genre.Name}`}>
-          <Button variant="link">Genre</Button>
-        </Link>
-        <br />
-        <Button
-            variant='primary'
-            onClick={(e) => this.addMovieToFavorites(e)}
+        <ButtonGroup defaultValue={[1, 3]} className="mb-2">
+          <Button variant="primary" 
+            onClick={() => {
+              onBackClick(null);
+            }}
           >
-            Add to favorites
+            Back
           </Button>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="primary">View Director's Works</Button>
+          </Link>
+
+          <Link to={`/genre/${movie.Genre.Name}`}>
+            <Button variant="primary">View Others in Genre</Button>
+          </Link>
+          <br />
+          <Button
+              variant='primary'
+              onClick={(e) => this.addMovieToFavorites(e)}
+            >
+              Add to favorites
+            </Button>
+          </ButtonGroup>
         </div>
     );
   }
