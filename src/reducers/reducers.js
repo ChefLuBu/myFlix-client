@@ -1,5 +1,5 @@
 import { combineReducers } from 'Redux';
-import { SET_FILTER, SET_MOVIES, ADD_MOVIES } from '../actions/actions';
+import { SET_FILTER, SET_MOVIES } from '../../actions/actions';
 
 function visibilityFilter(state='', action) {
     //enables the visibility filter, the state and the action are combined
