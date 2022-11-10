@@ -2,6 +2,15 @@ body {
   background: none;
 }
 
+* .navbar-logo {
+  height: var(--nav-height);
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+  display: flex;
+  position: relative;
+}
+
 form {
   background: #f1f1f1;
   border-radius: .5em;
@@ -13,11 +22,6 @@ form {
   justify-content: center;
   align-items: center;
   display: flex;
-}
-
-.movieCard {
-  font-weight: 500;
-  box-shadow: 0 10px 10px #00000080;
 }
 
 .movie-view {
@@ -33,15 +37,6 @@ form {
   display: flex;
 }
 
-* .navbar-logo {
-  height: var(--nav-height);
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: 20px;
-  display: flex;
-  position: relative;
-}
-
 p {
   font-size: larger;
 }
@@ -49,5 +44,10 @@ p {
 
 
 
+
+.movieCard {
+  font-weight: 500;
+  box-shadow: 0 10px 10px #00000080;
+}
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
