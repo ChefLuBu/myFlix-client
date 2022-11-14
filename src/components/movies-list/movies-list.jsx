@@ -6,8 +6,8 @@ import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-
 import { MovieCard } from '../movie-card/movie-card';
 
 const mapStateToProps = state => {
-  const { visibilityFilter } = state;
-  return { visibilityFilter };
+  const { visibilityFilter, movies } = state;
+  return { visibilityFilter, movies };
 };
 
 function MoviesList(props) {

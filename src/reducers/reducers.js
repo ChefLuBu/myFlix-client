@@ -1,5 +1,5 @@
 import { combineReducers } from 'Redux';
-import { SET_FILTER, SET_MOVIES } from '../../actions/actions';
+import { SET_FILTER, SET_MOVIES,LOG_IN } from '../actions/actions';
 
 function visibilityFilter(state='', action) {
     //enables the visibility filter, the state and the action are combined
@@ -25,9 +25,20 @@ function movies(state = [], action) {
     }
 }
 
+function loggedIn(state = false, action){
+    switch(action.type) {
+        case LOG_IN:
+            return action.value;
+    //returns the desired film
+            default:
+                return state;
+    }
+}
+
 const moviesApp = combineReducers({
     visibilityFilter,
-    movies
+    movies,
+    loggedIn
   //returns the app with the combined vis filter and the movies state as needed
 });
 

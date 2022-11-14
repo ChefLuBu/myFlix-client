@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import "./navbar.scss";
+import "./navbar.scss"; 
+import { propTypes } from "react-bootstrap/esm/Image";
+import { connect } from "react-redux";
 
-export function Menubar({ user }) {
 
-
+function Menubar(props) {
+const {user} = props
   const onLoggedOut = () => {
     localStorage.clear();
     window.open("/", "_self");
@@ -54,6 +56,14 @@ export function Menubar({ user }) {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      
     </Navbar>
   );
 }
+
+const mapStateToProps = state => {
+  const { loggedIn } = state;
+  return { loggedIn };
+};
+
+export default connect(mapStateToProps)(Menubar);

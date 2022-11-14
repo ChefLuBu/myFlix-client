@@ -19,8 +19,7 @@ export function LoginView(props) {
   const [usernameErr, setUsernameErr] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
 
-
-
+  
   const validate = () => {
     let isReq = true;
     if (!username) {
@@ -49,25 +48,24 @@ export function LoginView(props) {
     return isReq;
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     /* Send a request to the server for authentication */
 
     const isReq = validate();
     if (isReq) {
-    axios
-      .post("https://mykungfuflix.herokuapp.com/login", {
-        Username: username,
-        Password: password,
-      })
-      .then((response) => {
-        const data = response.data;
-        props.onLoggedIn(data);
-      })
-      .catch((e) => {
-        console.log("no such user");
-      });
+      axios
+        .post("https://mykungfuflix.herokuapp.com/login", {
+          Username: username,
+          Password: password,
+        })
+        .then((response) => {
+          const data = response.data;
+          props.onLoggedIn(data);
+        })
+        .catch((e) => {
+          console.log("no such user");
+        });
     }
   };
 
