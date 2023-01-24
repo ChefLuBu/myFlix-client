@@ -13,6 +13,8 @@ import {
   Col,
   Row,
 } from "react-bootstrap";
+import { API_ROOT } from "../config.js"
+
 export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -55,7 +57,7 @@ export function LoginView(props) {
     const isReq = validate();
     if (isReq) {
       axios
-        .post("https://mykungfuflix.herokuapp.com/login", {
+        .post(`${API_ROOT}/login`, {
           Username: username,
           Password: password,
         })

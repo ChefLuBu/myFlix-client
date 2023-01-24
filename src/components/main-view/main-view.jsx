@@ -14,7 +14,7 @@ import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { setMovies, setLoggedIn } from "../../actions/actions";
 import MoviesList from '../movies-list/movies-list';
-
+import { API_ROOT } from '../config.js'
 
 class MainView extends React.Component {
   constructor() {
@@ -28,7 +28,7 @@ class MainView extends React.Component {
 
   getMovies(token) {
     axios
-      .get("https://mykungfuflix.herokuapp.com/movies", {
+      .get(`${API_ROOT}/movies`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

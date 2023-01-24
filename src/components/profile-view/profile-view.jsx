@@ -12,6 +12,7 @@ import {
 import moment from "moment";
 import { Link } from "react-router-dom";
 import "./profile-view.scss";
+import { API_ROOT } from '../config.js'
 
 
 
@@ -37,7 +38,7 @@ export class ProfileView extends React.Component {
     const Username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
       axios
-      .get(`https://mykungfuflix.herokuapp.com/users/${Username}`, {
+      .get(`${API_ROOT}/users/${Username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -60,7 +61,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     axios
       .put(
-        `https://mykungfuflix.herokuapp.com/users/${username}`,
+        `${API_ROOT}/users/${username}`,
         {
           username: this.state.Username,
           Password: this.state.Password,
@@ -94,7 +95,7 @@ console.log(data)
       const token = localStorage.getItem("token");
       axios
         .delete(
-          `https://mykungfuflix.herokuapp.com/users/${username}`,
+          `${API_ROOT}/users/${username}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -115,7 +116,7 @@ console.log(data)
     const token = localStorage.getItem("token");
     axios
       .delete(
-        `https://mykungfuflix.herokuapp.com/users/${username}/movies/${movieId}`,
+        `${API_ROOT}/users/${username}/movies/${movieId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
