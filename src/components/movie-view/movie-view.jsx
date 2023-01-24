@@ -4,8 +4,7 @@ import { Button, ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner';
-import { API_ROOT } from '../config.js'
-
+import config from '../../config.js'
 
 import "./movie-view.scss";
 
@@ -20,7 +19,7 @@ addMovieToFavorites(e) {
 
 axios
   .post(
-    `${API_ROOT}/users/${username}/movies/${movie._id}`,
+    `${config.API_ROOT}/users/${username}/movies/${movie._id}`,
     {},
     {
       headers: { Authorization: `Bearer ${token}` },

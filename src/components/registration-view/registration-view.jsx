@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Row, Col, Button, Form } from "react-bootstrap";
-import { API_ROOT } from '../config.js'
-
+import config from '../../config.js'
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -57,7 +56,7 @@ export function RegistrationView(props) {
     const isReq = validate();
     if (isReq) {
       axios
-        .post(`${API_ROOT}/users"`, {
+        .post(`${config.API_ROOT}/users"`, {
           Username: username,
           Password: password,
           Email: email,

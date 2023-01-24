@@ -12,8 +12,7 @@ import {
 import moment from "moment";
 import { Link } from "react-router-dom";
 import "./profile-view.scss";
-import { API_ROOT } from '../config.js'
-
+import config from '../../config.js'
 
 
 
@@ -61,7 +60,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     axios
       .put(
-        `${API_ROOT}/users/${username}`,
+        `${config.API_ROOT}/users/${username}`,
         {
           username: this.state.Username,
           Password: this.state.Password,

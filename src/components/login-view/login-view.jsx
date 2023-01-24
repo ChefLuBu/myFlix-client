@@ -13,7 +13,7 @@ import {
   Col,
   Row,
 } from "react-bootstrap";
-import { API_ROOT } from "../config.js"
+import config from '../../config.js'
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -57,7 +57,7 @@ export function LoginView(props) {
     const isReq = validate();
     if (isReq) {
       axios
-        .post(`${API_ROOT}/login`, {
+        .post(`${config.API_ROOT}/login`, {
           Username: username,
           Password: password,
         })
