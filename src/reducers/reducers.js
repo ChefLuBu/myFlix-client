@@ -1,4 +1,4 @@
-import { combineReducers } from 'Redux';
+import { combineReducers } from 'redux';
 import { SET_FILTER, SET_MOVIES,LOG_IN } from '../actions/actions';
 
 function visibilityFilter(state='', action) {
