@@ -2938,10 +2938,10 @@ var _redux = require("redux");
 var _reactRedux = require("react-redux");
 var _reducers = require("./reducers/reducers");
 var _reducersDefault = parcelHelpers.interopDefault(_reducers);
-var _reduxDevToolsExtension = require("redux-devTools-extension");
+// import { devToolsEnhancer }from 'redux-devTools-extension'
 // Import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
-const store = (0, _redux.createStore)((0, _reducersDefault.default), (0, _reduxDevToolsExtension.devToolsEnhancer)());
+const store = (0, _redux.createStore)((0, _reducersDefault.default));
 // Main component (will eventually use all the others)
 class MyFlixApplication extends (0, _reactDefault.default).Component {
     render() {
@@ -2975,7 +2975,7 @@ const container = document.getElementsByClassName("app-container")[0];
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","redux":"cDNB3","react-redux":"bdVon","./reducers/reducers":"dgblV","redux-devTools-extension":"fOPxo","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","redux":"cDNB3","react-redux":"bdVon","./reducers/reducers":"dgblV","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("f2326839e14e0503");
 
@@ -48840,21 +48840,6 @@ const moviesApp = (0, _redux.combineReducers)({
 });
 exports.default = moviesApp;
 
-},{"Redux":"cDNB3","../actions/actions":"biFwH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fOPxo":[function(require,module,exports) {
-"use strict";
-var compose = require("38b898f97faee99a").compose;
-exports.__esModule = true;
-exports.composeWithDevTools = typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : function() {
-    if (arguments.length === 0) return undefined;
-    if (typeof arguments[0] === "object") return compose;
-    return compose.apply(null, arguments);
-};
-exports.devToolsEnhancer = typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__ : function() {
-    return function(noop) {
-        return noop;
-    };
-};
-
-},{"38b898f97faee99a":"cDNB3"}],"lJZlQ":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"Redux":"cDNB3","../actions/actions":"biFwH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lJZlQ":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
