@@ -37,7 +37,7 @@ export class ProfileView extends React.Component {
     const Username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
       axios
-      .get(`${API_ROOT}/users/${Username}`, {
+      .get(`${config.API_ROOT}/users/${Username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -94,7 +94,7 @@ console.log(data)
       const token = localStorage.getItem("token");
       axios
         .delete(
-          `${API_ROOT}/users/${username}`,
+          `${config.API_ROOT}/users/${username}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -115,7 +115,7 @@ console.log(data)
     const token = localStorage.getItem("token");
     axios
       .delete(
-        `${API_ROOT}/users/${username}/movies/${movieId}`,
+        `${config.API_ROOT}/users/${username}/movies/${movieId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
