@@ -37357,7 +37357,7 @@ function Menubar(props) {
         window.open("/", "_self");
     };
     const isAuth = ()=>{
-        if (typeof window == "undefined") return false;
+        window;
         if (localStorage.getItem("token")) return localStorage.getItem("token");
         else return false;
     };
@@ -37377,19 +37377,19 @@ function Menubar(props) {
                         src: "/img/logo.png"
                     }, void 0, false, {
                         fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 37,
+                        lineNumber: 39,
                         columnNumber: 10
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/navbar/navbar.jsx",
-                    lineNumber: 36,
+                    lineNumber: 38,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
                     "aria-controls": "responsive-navbar-nav"
                 }, void 0, false, {
                     fileName: "src/components/navbar/navbar.jsx",
-                    lineNumber: 40,
+                    lineNumber: 42,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
@@ -37397,16 +37397,16 @@ function Menubar(props) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav), {
                         className: "ml-auto",
                         children: [
-                            isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                            user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                 to: `/users/${user}`,
                                 as: (0, _reactRouterDom.Link),
                                 children: "Profile"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 43,
-                                columnNumber: 26
+                                lineNumber: 45,
+                                columnNumber: 22
                             }, this),
-                            isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                            user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 className: "dropdown-button",
                                 onClick: ()=>{
                                     onLoggedOut();
@@ -37414,47 +37414,47 @@ function Menubar(props) {
                                 children: "Logout"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 46,
+                                lineNumber: 48,
                                 columnNumber: 15
                             }, this),
-                            !isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                            !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                 to: "/",
                                 as: (0, _reactRouterDom.Link),
                                 children: "Sign-in"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 54,
-                                columnNumber: 27
+                                lineNumber: 56,
+                                columnNumber: 23
                             }, this),
-                            !isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                            !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                 to: "/register",
                                 as: (0, _reactRouterDom.Link),
                                 children: "Sign-up"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 55,
-                                columnNumber: 27
+                                lineNumber: 57,
+                                columnNumber: 23
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 42,
+                        lineNumber: 44,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/navbar/navbar.jsx",
-                    lineNumber: 41,
+                    lineNumber: 43,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/navbar/navbar.jsx",
-            lineNumber: 35,
+            lineNumber: 37,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/navbar/navbar.jsx",
-        lineNumber: 28,
+        lineNumber: 30,
         columnNumber: 5
     }, this);
 }
@@ -43982,7 +43982,7 @@ class ProfileView extends (0, _reactDefault.default).Component {
     getUser = ()=>{
         const Username = localStorage.getItem("user");
         const token = localStorage.getItem("token");
-        (0, _axiosDefault.default).get(`${API_ROOT}/users/${Username}`, {
+        (0, _axiosDefault.default).get(`${(0, _configJsDefault.default).API_ROOT}/users/${Username}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -44031,7 +44031,7 @@ class ProfileView extends (0, _reactDefault.default).Component {
         if (confirmDelete) {
             const username = localStorage.getItem("user");
             const token = localStorage.getItem("token");
-            (0, _axiosDefault.default).delete(`${API_ROOT}/users/${username}`, {
+            (0, _axiosDefault.default).delete(`${(0, _configJsDefault.default).API_ROOT}/users/${username}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -44048,7 +44048,7 @@ class ProfileView extends (0, _reactDefault.default).Component {
     removeFavoriteMovie = (movieId)=>{
         const username = localStorage.getItem("user");
         const token = localStorage.getItem("token");
-        (0, _axiosDefault.default).delete(`${API_ROOT}/users/${username}/movies/${movieId}`, {
+        (0, _axiosDefault.default).delete(`${(0, _configJsDefault.default).API_ROOT}/users/${username}/movies/${movieId}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

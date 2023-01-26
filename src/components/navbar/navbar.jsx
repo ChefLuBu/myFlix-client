@@ -13,8 +13,10 @@ const {user} = props
     window.open("/", "_self");
   };
 
+
+
   const isAuth = () => {
-    if (typeof window == "undefined") {
+    if (typeof window === undefined) {
       return false;
     }
     if (localStorage.getItem("token")) {
@@ -40,8 +42,8 @@ const {user} = props
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            {isAuth() && <Nav.Link to={`/users/${user}`} as={Link}>Profile</Nav.Link>}
-            {isAuth() && (
+            {user && <Nav.Link to={`/users/${user}`} as={Link}>Profile</Nav.Link>}
+            {user && (
            
               <Button className="dropdown-button"
                 onClick={() => {
@@ -51,8 +53,8 @@ const {user} = props
                 Logout
               </Button>
             )}
-            {!isAuth() && <Nav.Link to="/" as={Link}>Sign-in</Nav.Link>}
-            {!isAuth() && <Nav.Link to="/register" as={Link}>Sign-up</Nav.Link>}
+            {!user && <Nav.Link to="/" as={Link}>Sign-in</Nav.Link>}
+            {!user && <Nav.Link to="/register" as={Link}>Sign-up</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Container>
