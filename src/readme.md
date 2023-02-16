@@ -27,9 +27,15 @@ Update their profile
 Delete their account
 
 ## Technologies Used
+react-dom
+react-redux
+react-bootstrap
+axios
+parcel
+
 
 ## Links
-Live App:
+Live App: https://singular-ganache-fd70cd.netlify.app/
 API: https://movie-api-xfet.onrender.com
 
 ## Notes
