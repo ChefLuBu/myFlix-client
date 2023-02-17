@@ -1,7 +1,7 @@
-My Kung Fu Flix
+## My Kung Fu Flix
 This is the client-side view of a film tracking app, specifically for Kung Fu & Wuxia films, allowing users to create an account, access information about the genre, director & synopsis different films and save them to a personal list of favorites. Users are able to update their personal information and delete their account if desired. The API for this application can be found on the movie-api repo.
 
-Key Features
+## Key Features
 The initial landing page is a Welcome screen that allows new-user registration and login functions
 
 Upon login authentication, the user is moved to the films view which displays all film cards and an icon showing any favorited films
@@ -24,13 +24,14 @@ Update their profile
 
 Delete their account
 
-Technologies Used
+##Technologies Used
 react-dom react-redux react-bootstrap axios parcel
 
-Links
-Live App: https://singular-ganache-fd70cd.netlify.app/ API: https://movie-api-xfet.onrender.com
+## Links
+Live App: https://singular-ganache-fd70cd.netlify.app/ 
+API: https://movie-api-xfet.onrender.com
 
-Notes
+## Notes
 npx parcel src/index.html to launch server
 
 ES6 code (e.g., your import and export statements) and JSX code must be transpiled in Babel
