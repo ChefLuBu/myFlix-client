@@ -32,7 +32,7 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.8.3",
+    "@parcel/transformer-sass": "^2.4.1",
     "buffer": "^6.0.3",
     "nodemon": "^2.0.20",
     "parcel": "^2.7.0",

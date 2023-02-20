@@ -34,10 +34,7 @@ class MainView extends React.Component {
       .then((response) => {
         console.log(this.props)
         this.props.setMovies(response.data)
-        // this.setState({
-        //   movies: response.data,
-        // });
-      })
+         })
       .catch(function (error) {
         console.log(error);
       });
