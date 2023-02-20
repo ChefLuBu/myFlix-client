@@ -29,6 +29,7 @@ react-dom react-redux react-bootstrap axios parcel
 
 ## Links
 Live App: https://singular-ganache-fd70cd.netlify.app/ 
+
 API: https://movie-api-xfet.onrender.com
 
 ## Notes
