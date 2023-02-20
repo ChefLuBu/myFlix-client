@@ -24,8 +24,18 @@ Update their profile
 
 Delete their account
 
-##Technologies Used
-react-dom react-redux react-bootstrap axios parcel
+## Technologies Used
+react
+
+redux
+
+react-bootstrap 
+
+axios 
+
+parcel
+
+sass
 
 ## Links
 Live App: https://singular-ganache-fd70cd.netlify.app/ 
