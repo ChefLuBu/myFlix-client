@@ -24,6 +24,10 @@ Update their profile
 
 Delete their account
 
+## Screenshots
+![A screenshot of the profile page](./public/kungfuprofile.png)
+![A screenshot of the main display page](./public/movies.png)
+
 ## Technologies Used
 react
 
@@ -37,9 +41,7 @@ parcel
 
 sass
 
-## Screenshots
-![A screenshot of the profile page](./public/kungfuprofile.png)
-![A screenshot of the main display page](./public/movies.png)
+
 
 ## Links
 Live App: https://singular-ganache-fd70cd.netlify.app/ 
