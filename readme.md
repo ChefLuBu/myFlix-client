@@ -27,6 +27,10 @@ Delete their account
 ##Technologies Used
 react-dom react-redux react-bootstrap axios parcel
 
+## Screenshots
+![A screenshot of the profile page](./public/kungfuprofile.png)
+![A screenshot of the main display page](./public/movies.png)
+
 ## Links
 Live App: https://singular-ganache-fd70cd.netlify.app/ 
 API: https://movie-api-xfet.onrender.com
